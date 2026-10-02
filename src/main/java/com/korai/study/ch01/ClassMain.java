@@ -33,7 +33,7 @@ public class ClassMain {
             A age;
         }
 
-        Student3<String> jun3 = new Student3<String>();
+        Student3<String> jun3 = new Student3<String>(); //제네릭
         Student3<Integer> jun33 = new Student3<>();
         jun3.age = "33";
         jun33.age = 33;
