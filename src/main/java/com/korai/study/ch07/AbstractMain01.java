@@ -30,7 +30,7 @@ public class AbstractMain01 {
         lists.add(new ArrayList<>());
         lists.add(new LinkedList<>());
         lists.add(new ArrayList<>());
-        lists.get(0).get(0); // 이 리스트 안에서 0번째 인덱스    가져오라는 뜻
+        lists.get(0).get(0); // 이 리스트 안에서 0번째 인덱스 가져오라는 뜻
 
         double d = 10;
         int i = (int) d;
