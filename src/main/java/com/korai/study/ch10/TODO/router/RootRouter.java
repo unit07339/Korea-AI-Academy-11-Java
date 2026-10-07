@@ -1,6 +1,5 @@
 package com.korai.study.ch10.TODO.router;
 
-import com.korai.study.ch10.TODO.entity.TodoStatus;
 import com.korai.study.ch10.TODO.repository.TodoRepository;
 import com.korai.study.ch10.TODO.repository.UserRepository;
 import com.korai.study.ch10.TODO.service.TodoService;
@@ -19,7 +18,7 @@ public class RootRouter {
         LoginView loginView = new LoginView(userService);
 
         TodoRepository todoRepository = new TodoRepository(); // <3>
-        TodoService todoService = new TodoService(todoRepository, userRepository);
+        TodoService todoService = new TodoService(todoRepository, userRepository); // <4>
         TodoListView todoListView = new TodoListView(todoService);
 
         TodoRegisterView todoRegisterView = new TodoRegisterView(todoService);
@@ -31,7 +30,7 @@ public class RootRouter {
                 "todo-register", todoRegisterView,
                 "todo-status", todoStatusView
         );
-    }
+    } // <5>>
 
     public static String getCurrent() {
         return current;
@@ -82,5 +81,34 @@ TodoRepository todoRepository = new TodoRepository();
 TodoRepository 객체를 생성함
 
 [ TodoRepository 타고 들어가기 : 할 일 데이터 저장소 ]
+
+
+<4>
+TodoService todoService = new TodoService(todoRepository, userRepository);
+todoRepository와 userRepository 두 개의 의존성 주입받아 TodoService 객체를 생성함
+
+[ TodoService 타고 들어가기 : 할 일 비즈니스 로직 ]
+
+
+<5>
+TodoListView todoListView = new TodoListView(todoService);
+할 일 목록 화면 생성
+
+TodoRegisterView todoRegisterView = new TodoRegisterView(todoService);
+할 일 등록 화면 생성
+
+TodoStatusView todoStatusView = new TodoStatusView(todoService);
+상태 변경 화면 생성
+
+viewMap = Map.of(
+        "login", loginView,
+        "todo-list", todoListView,
+        "todo-register", todoRegisterView,
+        "todo-status", todoStatusView
+);
+Map 객체에 각 경로명("login", "todo-list", "todo-register", "todo-status")을 키로 설정하여 화면 객체를 보관함
+setUp() 종료
+
+[ TodoApplication으로 다시 돌아가기 ]
 
 */

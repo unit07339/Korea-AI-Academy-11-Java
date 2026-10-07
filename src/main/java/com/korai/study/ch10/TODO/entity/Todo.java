@@ -8,7 +8,7 @@ import lombok.Data;
 public class Todo {
     private int id;
     private TodoStatus status; // 진행 상태 (todo, inProgress, done)
-    private String content;
-    private User user;
+    private String content; // 내용
+    private User user; // 할 일 작성자 정보
 
 }

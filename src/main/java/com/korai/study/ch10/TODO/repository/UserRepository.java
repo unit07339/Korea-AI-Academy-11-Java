@@ -2,7 +2,6 @@ package com.korai.study.ch10.TODO.repository;
 
 import com.korai.study.ch10.TODO.entity.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +23,7 @@ public class UserRepository {
             }
         }
         return null;
-    }
+    } // <2>
 
     public User findById(int id) {
         for (User user : users) {
@@ -53,5 +52,21 @@ users = List.of(user1, user2, user3, user4);
 생성된 4명의 회원 객체를 읽기 전용 리스트로 만들어 users 변수에 할당함
 
 [ 다시 RootRouter.setUp()으로 돌아감 ]
+
+
+<2>
+for (User user : users) {
+등록된 회원 리스트(users) 전체를 순회함
+
+if (Objects.equals(user.getUsername(), username)) {
+파라미터로 들어온 username 과 리스트 안 유저의 username이 같은지 비교함
+
+return user;
+같은 사용자를 찾았다면 그 User 객체를 리턴함
+
+return null;
+끝까지 못 찾았으면 null을 리턴함
+
+[ 다시 UserService.login()으로 돌아가기 ]
 
 */
