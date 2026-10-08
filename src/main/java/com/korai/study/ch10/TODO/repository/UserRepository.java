@@ -14,7 +14,7 @@ public class UserRepository {
             User user3 = new User(3, "test3", "1q2w3e4r!", "김준삼");
             User user4 = new User(4, "test4", "1q2w3e4r!", "김준사");
             users = List.of(user1, user2, user3, user4);
-        } // <1>
+        } // <3>
 
         public User findByUsername(String username) {
         for (User user : users) {
@@ -23,7 +23,7 @@ public class UserRepository {
             }
         }
         return null;
-    } // <2>
+    } // <14>
 
     public User findById(int id) {
         for (User user : users) {
@@ -36,7 +36,7 @@ public class UserRepository {
 }
 
 /*
-<1>
+<3>
 private List<User> user;
 회원 목록을 보관할 리스트 변수임
 
@@ -54,7 +54,7 @@ users = List.of(user1, user2, user3, user4);
 [ 다시 RootRouter.setUp()으로 돌아감 ]
 
 
-<2>
+<14>
 for (User user : users) {
 등록된 회원 리스트(users) 전체를 순회함
 

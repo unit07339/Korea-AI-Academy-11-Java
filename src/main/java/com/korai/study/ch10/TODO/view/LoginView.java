@@ -27,7 +27,7 @@ public class LoginView implements View {
         System.out.print("password: ");
         password = scanner.nextLine();
 
-        String token = userService.login(username, password); // <1>
+        String token = userService.login(username, password); // <12>
         if (token == null) {
             System.out.println("로그인 정보를 다시 확인하세요.");
             System.out.print("계속 진행하시려면 엔터를 눌러주세요...");
@@ -37,13 +37,13 @@ public class LoginView implements View {
 
         SecurityConfig.setLoginSession(token);
         System.out.println(String.format("로그인 성공. %s님 환영합니다.", username));
-        RootRouter.setCurrent("todo-list"); // <2>
+        RootRouter.setCurrent("todo-list"); // <17>
     }
 
 }
 
 /*
-<1>
+<12>
 private UserService userService;
 private Scanner scanner;
 사용할 서비스 객체와 입력용 스캐너 변수 선언
@@ -86,7 +86,7 @@ String token = userService.login(username, password);
 [ UserService.login() 타고 들어가기 : 로그인 검증 ]
 
 
-<2>
+<17>
 if (token == null) {
 토큰이 null이면 (로그인 실패시)
 

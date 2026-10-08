@@ -14,13 +14,13 @@ public class TodoRepository {
 
     public TodoRepository() {
         todos = new ArrayList<>();
-    } // <1>
+    } // <7>
     public void insert(Todo todo) {
         todo.setId(autoIncrement++);
         todos.add(todo);
     }
 
-    public List<Todo> findAllByUserId(int userId) {
+    public List<Todo> findAllByUserId(int userId) { // <22~>
         List<Todo> filteringTodos = new ArrayList<>();
         for (int i = 0; i < todos.size(); i++) {
             if (todos.get(i).getUser().getId() == userId) {
@@ -30,7 +30,7 @@ public class TodoRepository {
         if (filteringTodos.size() == 0) {
             return null;
         }
-        return filteringTodos;
+        return filteringTodos; // <~22>
     }
     public void updateStatus(int todoId, TodoStatus todoStatus) {
         for (int i = 0; i < todos.size(); i++) {
@@ -42,7 +42,7 @@ public class TodoRepository {
     }
 }
 /*
-<1>
+<7>
 private int autoIncrement = 1;
 새 할 일이 추가될 때마다 자동으로 부여할 PK ID* 값의 카운터임 (1부터 시작)
 *PK ID :
@@ -56,5 +56,19 @@ public TodoRepository() { todos = new ArrayList<>(); }
 <<< Todo 및 TodoStatus : 참고 엔티티 >>>
 
 [ 다시 RootRouter.setUp()으로 돌아가기 ]
+
+
+<22>
+if (todos.get(i).getUser().getId() == userId) {filteringTodos.add(todos.get(i));}
+전체 목록 중 '현재 로그인 유저 ID'와 같은 건만 수집
+
+if (filteringTodos.size() == 0) {return null;}
+걸러진 건수가 없으면 null 반환
+
+return filteringTodos;
+조건에 해당하는 리스트 반환
+
+[ 다시 TodoListView.printTodoList()로 돌아가기 ]
+
 
 */

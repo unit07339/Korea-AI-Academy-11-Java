@@ -16,16 +16,16 @@ public class TodoListView implements View {
         this.todoService = todoService;
     }
 
-    @Override
+    @Override // <18~>
     public void show() {
         System.out.println("[ TODO LIST 목록 ]");
-        printTodoList();
+        printTodoList(); // <~18>
         showSelectList();
     }
 
-    private void printTodoList() {
-        if (todoService.getTodoList() == null) {
-            System.out.println("등록된 할 일이 없습니다.");
+    private void printTodoList() { // <19~>
+        if (todoService.getTodoList() == null) { // <19>>
+            System.out.println("등록된 할 일이 없습니다."); // <23>
             return;
         }
         for (Todo todo : todoService.getTodoList()) {
@@ -51,3 +51,25 @@ public class TodoListView implements View {
         }
     }
 }
+/*
+<18>
+System.out.println("[ TODO LIST 목록 ]");
+제목 출력
+
+printTodoList();
+내 할 일 목록을 출력하는 내부 메서드 실행
+
+[ printTodoList() 타고 들어가기 (아래에 있음) ]
+
+
+<19>
+if (todoService.getTodoList() == null) {
+가져온 목록이 null 인지 확인함
+
+[ TodoService.getTodoList() 타고 들어가기 ]
+
+
+<23>
+System.out.println("등록된 할 일이 없습니다.");
+
+*/

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ControlMain5 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // scanner 클래스
         String name = "";
         String age = "";
         String address = "";

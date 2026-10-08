@@ -12,7 +12,7 @@ public class ControlMain6 {
         while (true) {
             System.out.println("이름을 추가하시겠습니까? (y/n): ");
             String yesOrNo = scanner.nextLine();
-            if (yesOrNo.equalsIgnoreCase("y")) {
+            if ("y".equalsIgnoreCase(yesOrNo)) {
                 System.out.println("이름: ");
                 String name = scanner.nextLine();
 
@@ -22,6 +22,7 @@ public class ControlMain6 {
                 }
                 newNames[newNames.length - 1] = name;
                 names = newNames;
+
             } else if (yesOrNo.equalsIgnoreCase("n")) {
                 break;
             } else {

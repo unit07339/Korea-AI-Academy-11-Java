@@ -13,12 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TodoService {
     private final TodoRepository todoRepository;
-    private final UserRepository userRepository; // <1>
+    private final UserRepository userRepository; // <9>
 
     public List<Todo> getTodoList() {
 
         return todoRepository.findAllByUserId(SecurityConfig.getUserId());
-    }
+    } // <20>
 
     public void register(String content) {
         User foundUser = userRepository.findById(SecurityConfig.getUserId());
@@ -32,7 +32,7 @@ public class TodoService {
 }
 
 /*
-<1>
+<9>
 @RequiredArgsConstructor
 Required(final이 붙은) 멤버 변수들을 매개변수로 받는 생성자를 자동으로 만들어 주는 어노테이션
 
@@ -47,6 +47,13 @@ private final UserRepository userRepository;
 즉, 회원 정보 저장소(UserRepository)도 필수 부품으로 필요하기 때문에 final을 붙여 선언한 것
 
 [ 다시 RootRouter로 돌아가기 ]
+
+
+<20>
+다시 물어보기
+
+[ SecurityConfig.getUserId() 타고 들어가기 ]
+
 
 
 */

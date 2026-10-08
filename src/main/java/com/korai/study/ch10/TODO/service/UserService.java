@@ -9,10 +9,10 @@ import java.util.Objects;
 
 @RequiredArgsConstructor
 public class UserService {
-    private final UserRepository userRepository; // <1> , final은 무조건 초기화
+    private final UserRepository userRepository; // <5> , final은 무조건 초기화
 
     public String login(String username, String password) {
-        User foundUser = userRepository.findByUsername(username); // <2>
+        User foundUser = userRepository.findByUsername(username); // <13>
         if (foundUser == null) {
             return null;
         }
@@ -20,11 +20,11 @@ public class UserService {
             return null;
         }
         return SecurityConfig.generateSessionToken(foundUser);
-    } // <3>
+    } // <15>
 }
 
 /*
-<1>
+<5>
 @RequiredArgsConstructor
 final 키워드가 붙은 필드를 매개변수로 받아 초기화하는 생성자 자동 생성
 
@@ -35,14 +35,14 @@ final 키워드로 필수 객체 지정
 
 
 
-<2>
+<13>
 User foundUser = userRepository.findByUsername(username);
 userRepository의 findByUsername 메서드를 실행해 유저를 탐색함
 
 [ UserRepository.findByUsername() 타고 들어가기 ]
 
 
-<3>
+<15>
 if (foundUser == null) {return null;}
 유저 정보가 없으면 로그인 실패 (null 리턴)
 
